@@ -1,0 +1,21 @@
+Microsoft Visual Studio Solution File, Format Version 7.00
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Finance Planner", "Finance Planner.vbproj", "{0EE897ED-DA4E-4425-B2C8-8B8B582C1EAA}"
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		ConfigName.0 = Debug
+		ConfigName.1 = Release
+	EndGlobalSection
+	GlobalSection(ProjectDependencies) = postSolution
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{0EE897ED-DA4E-4425-B2C8-8B8B582C1EAA}.Debug.ActiveCfg = Debug|.NET
+		{0EE897ED-DA4E-4425-B2C8-8B8B582C1EAA}.Debug.Build.0 = Debug|.NET
+		{0EE897ED-DA4E-4425-B2C8-8B8B582C1EAA}.Release.ActiveCfg = Release|.NET
+		{0EE897ED-DA4E-4425-B2C8-8B8B582C1EAA}.Release.Build.0 = Release|.NET
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

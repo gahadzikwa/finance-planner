@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Project xmlns="http://tempuri.org/ProjectData.xsd">
+	<Journal>
+		<Title>Test</Title>
+		<Entry>
+			<Comment>Test</Comment>
+			<Date>2004-01-01T00:00:00.0000000-05:00</Date>
+			<Transaction>
+				<Path>Equity</Path>
+				<CreditValue>1</CreditValue>
+			</Transaction>
+			<Transaction>
+				<Path>Cash</Path>
+				<DebitValue>1</DebitValue>
+			</Transaction>
+		</Entry>
+	</Journal>
+	<Ledger>
+		<Title>Ledger</Title>
+		<LedgerAccount>
+			<Path>Equity</Path>
+		</LedgerAccount>
+		<LedgerAccount>
+			<Path>Cash</Path>
+		</LedgerAccount>
+	</Ledger>
+</Project>

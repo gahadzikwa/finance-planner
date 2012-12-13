@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xs:schema id="ProjectData" targetNamespace="http://tempuri.org/ProjectData.xsd" elementFormDefault="qualified" xmlns="http://tempuri.org/ProjectData.xsd" xmlns:mstns="http://tempuri.org/ProjectData.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" version="1.0.0">
+	<xs:simpleType name="BalanceType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Debit" />
+			<xs:enumeration value="Credit" />
+			<xs:enumeration value="Unspecified" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:element name="Project">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Title" type="xs:string" />
+				<xs:element name="Journal" maxOccurs="1" minOccurs="0">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="Entry">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="Comment" type="xs:string" />
+										<xs:element name="Transaction">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="Path" type="xs:string" />
+													<xs:element name="Value" type="xs:float" nillable="true" />
+													<xs:element name="Quantity" type="xs:integer" nillable="true" />
+													<xs:element name="NormalBalance" type="BalanceType" />
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="Type" type="EntryType" nillable="true" />
+										<xs:element name="Date" type="xs:date" />
+										<xs:element name="ID" type="xs:int" />
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="Ledger" minOccurs="0" maxOccurs="1">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="LedgerAccount">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="ID" type="xs:int" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="0" msdata:AutoIncrementStep="1" />
+										<xs:element name="Unit" type="xs:string" />
+										<xs:element name="NormalBalance" type="BalanceType" />
+										<xs:element name="Path" type="xs:string" />
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+							<xs:element name="FirstDate" type="xs:date" nillable="true" />
+							<xs:element name="LastDate" type="xs:date" nillable="true" />
+						</xs:sequence>
+					</xs:complexType>
+					<xs:key name="AccountKey">
+						<xs:selector xpath=".//LedgerAccount" />
+						<xs:field xpath="mstns:Path" />
+					</xs:key>
+				</xs:element>
+				<xs:element name="Budget" maxOccurs="1" minOccurs="0">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="BudgetAccount">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="ID" type="xs:int" />
+										<xs:element name="ValueReferenceAccountID" type="xs:int" />
+										<xs:element name="Type" type="BudgetAccountType" />
+										<xs:element name="Value" type="xs:float" />
+										<xs:element name="Quantity" type="xs:integer" />
+										<xs:element name="Unit" type="xs:string" />
+										<xs:element name="NormalBalance" type="BalanceType" />
+										<xs:element name="Path" type="xs:string" />
+										<xs:element name="QuantityReferenceAccountID" type="xs:int" />
+										<xs:element name="ParentAccountID" type="xs:int" nillable="true" />
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="Layout" maxOccurs="1" minOccurs="0">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="WindowType" type="xs:integer" />
+							<xs:element name="Height" type="xs:integer" />
+							<xs:element name="Width" type="xs:integer" />
+							<xs:element name="Top" type="xs:integer" />
+							<xs:element name="Left" type="xs:integer" />
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+		<xs:key name="BudgetAccountKey">
+			<xs:selector xpath=".//mstns:BudgetAccount" />
+			<xs:field xpath="ID" />
+		</xs:key>
+		<xs:key name="LedgerAccountKey">
+			<xs:selector xpath=".//mstns:LedgerAccount" />
+			<xs:field xpath="ID" />
+		</xs:key>
+	</xs:element>
+	<xs:simpleType name="EntryType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Opening" />
+			<xs:enumeration value="Closing" />
+			<xs:enumeration value="Adjusting" />
+			<xs:enumeration value="Transaction" />
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="BudgetAccountType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Fixed" />
+			<xs:enumeration value="VariableValue" />
+			<xs:enumeration value="VariableQuantity" />
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

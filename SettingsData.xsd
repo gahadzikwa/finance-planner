@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<xs:schema id="SettingsData" targetNamespace="http://tempuri.org/SettingsData.xsd" elementFormDefault="qualified" attributeFormDefault="qualified" xmlns="http://tempuri.org/SettingsData.xsd" xmlns:mstns="http://tempuri.org/SettingsData.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+	<xs:element name="SettingsData" msdata:IsDataSet="true">
+		<xs:complexType>
+			<xs:choice maxOccurs="unbounded">
+				<xs:element name="Settings">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="RecentDocuments">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="path" type="xs:string" minOccurs="0" />
+										<xs:element name="name" type="xs:string" minOccurs="0" />
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>
